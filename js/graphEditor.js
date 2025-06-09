@@ -1,6 +1,7 @@
 class GraphEditor {
-    constructor(canvas, graph) {
-        this.canvas = canvas;
+    constructor(viewport, graph) {
+        this.viewport = viewport;
+        this.canvas = viewport.canvas;
         this.graph = graph;
 
         this.ctx = this.canvas.getContext("2d");
@@ -14,15 +15,17 @@ class GraphEditor {
     }
 
     #addEventListeners() { // Logic should fit in one page to avoid needing to scroll.
-        this.canvas.addEventListener("mousedown", this.#handleMouseDown.bind(this));
+        /** Bind function call, binds scoped logic to Graph Editor specifically. 
+         * Previously this was interpretted to (event) canvas. Bind, binds function to this this (Graph Editor) */
+        this.canvas.addEventListener("mousedown", this.#handleMouseDown.bind(this)); 
         this.canvas.addEventListener("mousemove", this.#handleMouseMove.bind(this));
         this.canvas.addEventListener("contextmenu", (evt) => evt.preventDefault());
         this.canvas.addEventListener("mouseup", () => this.dragging = false);
     }
 
     #handleMouseMove(evt) {
-        this.mouse = new Point(evt.offsetX, evt.offsetY);
-        this.hovered = getNearestPoint(this.mouse, this.graph.points, 10);
+        this.mouse = this.viewport.getMouse(evt, true);
+        this.hovered = getNearestPoint(this.mouse, this.graph.points, 10 * this.viewport.zoom); //adaptive threshold
         if (this.dragging == true) {
             this.selected.x = this.mouse.x;
             this.selected.y = this.mouse.y;
@@ -62,6 +65,12 @@ class GraphEditor {
         if (this.selected == point) {
             this.selected = null;
         }
+    }
+
+    dispose() {
+        this.graph.dispose();
+        this.selected = null;
+        this.howvered = null;
     }
 
     display() {
