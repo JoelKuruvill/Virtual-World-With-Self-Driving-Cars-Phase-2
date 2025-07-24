@@ -99,11 +99,15 @@
             const viewport = new Viewport(myCanvas);
             const graphEditor = new GraphEditor(viewport, graph); //Graph editor will handle all drawing of the Canvas
 
+            let oldGraphHash = graph.hash();
             animate(); //does an animation loop.
 
             function animate() { // animates at around 60fps!
                 viewport.reset();
-                world.generate();
+                if (graph.hash() != oldGraphHash) {
+                    world.generate();
+                    oldGraphHash = graph.hash();
+                }
                 world.draw(ctx);
                 ctx.globalAlpha = 0.3;
                 graphEditor.display();

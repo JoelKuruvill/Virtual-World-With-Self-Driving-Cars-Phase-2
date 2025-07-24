@@ -1,8 +1,8 @@
 # Virtual World With Self Driving Cars Phase 2
 **Started:** 2024-May-15 \
-**Updated:** 2025-July-25
+**Updated:** 2025-July-24
 
-Stopped at 2hr49mins32secs.
+Stopped at 3hr31mins54secs.
 
 A project I created following a [freeCodeCamp tutorial](https://www.freecodecamp.org/news/create-a-virtual-world-with-javascript/). Learning to create a Virtual Environment using the JS Canvas.
 
