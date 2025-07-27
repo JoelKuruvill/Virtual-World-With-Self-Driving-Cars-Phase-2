@@ -87,3 +87,7 @@ function getIntersection(A,B,C,D){
         return p1.x * p2.x + p1.y * p2.y;
     }
 // End of Cited Code block.
+
+function lerp2D(A, B, t) {
+    return new Point(lerp(A.x, B.x, t), lerp(A.y, B.y, t));
+}
