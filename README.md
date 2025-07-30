@@ -2,7 +2,7 @@
 **Started:** 2024-May-15 \
 **Updated:** 2025-July-30
 
-Stopped at 4hr56mins49secs. 
+Stopped at 5hr05mins45secs. 
 
 A project I created following a [freeCodeCamp tutorial](https://www.freecodecamp.org/news/create-a-virtual-world-with-javascript/). Learning to create a Virtual Environment using the JS Canvas.
 
