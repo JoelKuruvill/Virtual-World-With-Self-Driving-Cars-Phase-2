@@ -10,17 +10,36 @@ class GraphEditor {
         this.hovered = null;
         this.dragging = false;
         this.mouse = null;
+    }
 
+    enable() {
         this.#addEventListeners();
+    }
+
+    disable() {
+        this.#removeEventListeners();
+        this.selected = false;
+        this.hovered = false;
     }
 
     #addEventListeners() { // Logic should fit in one page to avoid needing to scroll.
         /** Bind function call, binds scoped logic to Graph Editor specifically. 
          * Previously this was interpretted to (event) canvas. Bind, binds function to this this (Graph Editor) */
-        this.canvas.addEventListener("mousedown", this.#handleMouseDown.bind(this)); 
-        this.canvas.addEventListener("mousemove", this.#handleMouseMove.bind(this));
-        this.canvas.addEventListener("contextmenu", (evt) => evt.preventDefault());
-        this.canvas.addEventListener("mouseup", () => this.dragging = false);
+        this.boundMouseDown = this.#handleMouseDown.bind(this);
+        this.boundMouseMove = this.#handleMouseMove.bind(this);
+        this.boundMoseUp = () => this.dragging = false;
+        this.boundContextMenu = (evt) => evt.preventDefault();
+        this.canvas.addEventListener("mousedown", this.boundMouseDown); 
+        this.canvas.addEventListener("mousemove", this.boundMouseMove);
+        this.canvas.addEventListener("mouseup", this.boundMoseUp);
+        this.canvas.addEventListener("contextmenu", this.conextMenu);
+    }
+
+    #removeEventListeners() {
+        this.canvas.removeEventListener("mousedown", this.boundMouseDown); 
+        this.canvas.removeEventListener("mousemove", this.boundMouseMove);
+        this.canvas.removeEventListener("mouseup", () => this.boundMoseUp);
+        this.canvas.removeEventListener("contextmenu", this.conextMenu);
     }
 
     #handleMouseMove(evt) {
