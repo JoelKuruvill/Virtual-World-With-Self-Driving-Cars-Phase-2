@@ -1,8 +1,8 @@
 # Virtual World With Self Driving Cars Phase 2
 **Started:** 2024-May-15 \
-**Updated:** 2025-July-30
+**Updated:** 2025-July-31
 
-Stopped at 5hr05mins45secs. 
+Stopped at 5hr31mins36secs.
 
 A project I created following a [freeCodeCamp tutorial](https://www.freecodecamp.org/news/create-a-virtual-world-with-javascript/). Learning to create a Virtual Environment using the JS Canvas.
 
@@ -23,11 +23,12 @@ I started with setting up this project but then decided to complete part 1 first
 - Make your design.. "not just good, but really good"
 
 # References
-Save Icon       | https://emojipedia.org/floppy-disk
-Dispose Icon    | https://emojipedia.org/wastebasket
-Graph Mode Icon | https://emojipedia.org/chart-increasing
-Stop Icon       | https://emojipedia.org/stop-sign
-Crossing Icon   | https://emojipedia.org/person-walking
+- Save Icon       | https://emojipedia.org/floppy-disk
+- Dispose Icon    | https://emojipedia.org/wastebasket
+- Graph Mode Icon | https://emojipedia.org/chart-increasing
+- Stop Icon       | https://emojipedia.org/stop-sign
+- Crossing Icon   | https://emojipedia.org/person-walking
+- Car Icon        | https://emojipedia.org/racing-car
 
 https://radufromfinland.com/projects/virtualworld/CODES/lesson_4.js
 https://radufromfinland.com/projects/virtualworld/CODES/lesson_5.js

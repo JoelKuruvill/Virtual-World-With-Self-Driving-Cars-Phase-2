@@ -14,7 +14,7 @@ class World {
         this.buildingMinLength = buildingMinLength;
         this.spacing = spacing;
         this.treeSize = treeSize;
-
+        
         this.envelopes = [];
         this.roadBorders = [];
         this.buildings = [];
@@ -24,6 +24,24 @@ class World {
         this.markings = [];
 
         this.generate();
+    }
+
+    static load(info) {
+        const world = new World(new Graph());
+        world.graph = Graph.load(info.graph);
+        world.roadWidth = info.roadWidth;
+        world.roadRoundess = info.roadRoundess;
+        world.buildingWidth = info.buildingWidth;
+        world.buildingMinLength = info.buildingMinLength;
+        world.spacing = info.spacing;
+        world.treeSize = info.treeSize;
+        world.envelopes = info.envelopes.map((e) => Envelope.load(e));
+        world.roadBorders = info.roadBorders.map((b) => new Segment(b.p1, b.p2)); //Segment should have a check and load function too ideally.
+        world.buildings = info.buildings.map((e) => Building.load(e));
+        world.trees = info.trees.map((t) => new Tree(t.center, info.treeSize));
+        world.laneGuides = info.laneGuides.map((g) => new Segment(g.p1, g.p2));
+        world.markings = info.markings.map((m) => Marking.load(m));
+        return world;
     }
 
     generate() {

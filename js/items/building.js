@@ -4,6 +4,10 @@ class Building {
         this.heightCoef = heightCoef;
     }
 
+    static load(info) {
+        return new Building(Polygon.load(info.base), info.height);
+    }
+
     draw(ctx, viewPoint) {
         //For 3D effect:
         const topPoints = this.base.points.map((p) =>
